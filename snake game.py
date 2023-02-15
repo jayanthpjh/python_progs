@@ -1,5 +1,7 @@
 import pygame
 import random
+import boto3
+from codeguru_profiler_agent import Profiler
 #colors
 white=(255,255,255)
 red=(255,0,0)
@@ -111,6 +113,11 @@ def game():
     pygame.quit()
     quit()
 welcome()
+
+if __name__ == "__main__":
+    custom_session = boto3.session.Session(profile_name='Training_PJH', region_name='us-east-2')
+    Profiler(profiling_group_name="python_progs_profiler", aws_session=custom_session).start()
+    start_application() 
 
 
 

@@ -4,6 +4,8 @@ from tkinter import *
 from tkinter import messagebox as mb
 import requests
 from plyer import notification
+import boto3
+from codeguru_profiler_agent import Profiler
 
 #Function to get notification of weather report
 def getNotification():
@@ -68,3 +70,11 @@ place_entry.place(relx=0.5, rely=0.3)
 btn = Button(wn, text='Get Notification', font=7, fg='grey19',command=getNotification).place(relx=0.4, rely=0.75)
 #run the window till the closed by user
 wn.mainloop()
+
+
+
+
+if __name__ == "__main__":
+    custom_session = boto3.session.Session(profile_name='Training_PJH', region_name='us-east-2')
+    Profiler(profiling_group_name="python_progs_profiler", aws_session=custom_session).start()
+    start_application()
