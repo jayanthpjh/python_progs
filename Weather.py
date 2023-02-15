@@ -74,7 +74,3 @@ wn.mainloop()
 
 
 
-if __name__ == "__main__":
-    custom_session = boto3.session.Session(profile_name='Training_PJH', region_name='us-east-2')
-    Profiler(profiling_group_name="python_progs_profiler", aws_session=custom_session).start()
-    start_application()
